@@ -95,8 +95,8 @@ public class LocalizationManager : MonoBehaviour {
 
     public static string Convert(string key)
     {
-      
-        string result = instance.missingTextString;
+
+        string result = key;// instance.missingTextString;
         if (instance.localizedText.ContainsKey(key))
         {
             result = instance.localizedText[key];
@@ -121,7 +121,7 @@ public class LocalizationManager : MonoBehaviour {
     public static string Convert(string key, params string[] variables)
     {
 
-        string rawText = instance.missingTextString;
+        string rawText = key;// instance.missingTextString;
         if (instance.localizedText.ContainsKey(key))
         {
             rawText = instance.localizedText[key];
