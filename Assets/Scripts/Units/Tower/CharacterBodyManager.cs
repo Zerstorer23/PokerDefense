@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.U2D.Animation;
+
 
 public class CharacterBodyManager : MonoBehaviour
 {
@@ -12,13 +12,13 @@ public class CharacterBodyManager : MonoBehaviour
     string category_mouth = "Mouth";
     string uid ="";
 
-    [SerializeField] SpriteResolver hairFront;
-    [SerializeField] SpriteResolver hairRear;
-    [SerializeField] SpriteResolver eye;
-    [SerializeField] SpriteResolver mouth;
+    [SerializeField] UnityEngine.U2D.Animation.SpriteResolver hairFront;
+    [SerializeField] UnityEngine.U2D.Animation.SpriteResolver hairRear;
+    [SerializeField] UnityEngine.U2D.Animation.SpriteResolver eye;
+    [SerializeField] UnityEngine.U2D.Animation.SpriteResolver mouth;
 
     CharacterConfig myConfig;
-    SpriteLibrary spriteLibrary;
+    UnityEngine.U2D.Animation.SpriteLibrary spriteLibrary;
     
     Animator characterAnimator;
 
@@ -32,7 +32,7 @@ public class CharacterBodyManager : MonoBehaviour
     {
        // Debug.Log("charbody srtart");
         characterAnimator = GetComponent<Animator>();
-        spriteLibrary = GetComponent<SpriteLibrary>();
+        spriteLibrary = GetComponent<UnityEngine.U2D.Animation.SpriteLibrary>();
         EventManager.StartListening(MyEvents.EVENT_GAMESESSION_WAVE_FINISHED, OnWaveFinish);
       //  Debug.Log("charbody end");
     }
@@ -76,29 +76,29 @@ public class CharacterBodyManager : MonoBehaviour
         tower = t;
     }
     internal void SetHairSkins(string key) {
-        hairFront.GetComponent<SpriteResolver>().SetCategoryAndLabel(category_hairFront,key);
-        hairRear.GetComponent<SpriteResolver>().SetCategoryAndLabel(category_hairRear, key);
+        hairFront.GetComponent<UnityEngine.U2D.Animation.SpriteResolver>().SetCategoryAndLabel(category_hairFront,key);
+        hairRear.GetComponent<UnityEngine.U2D.Animation.SpriteResolver>().SetCategoryAndLabel(category_hairRear, key);
 
-        hairFront.GetComponent<SpriteResolver>().ResolveSpriteToSpriteRenderer();
-        hairRear.GetComponent<SpriteResolver>().ResolveSpriteToSpriteRenderer();
+        hairFront.GetComponent<UnityEngine.U2D.Animation.SpriteResolver>().ResolveSpriteToSpriteRenderer();
+        hairRear.GetComponent<UnityEngine.U2D.Animation.SpriteResolver>().ResolveSpriteToSpriteRenderer();
     }
     internal void SetMouthSkin(string key)
     {
-        SpriteResolver rs = mouth.GetComponent<SpriteResolver>();
+        UnityEngine.U2D.Animation.SpriteResolver rs = mouth.GetComponent<UnityEngine.U2D.Animation.SpriteResolver>();
         rs.SetCategoryAndLabel(category_mouth, key);
         rs.ResolveSpriteToSpriteRenderer();
     }
     internal void SetOriginalMouth() {
         if (myConfig == null) return;
-        SpriteResolver rs = mouth.GetComponent<SpriteResolver>();
+        UnityEngine.U2D.Animation.SpriteResolver rs = mouth.GetComponent<UnityEngine.U2D.Animation.SpriteResolver>();
         rs.SetCategoryAndLabel(category_mouth, myConfig.mouthID);
         rs.ResolveSpriteToSpriteRenderer();
     }
     internal void SetEyeSkin(string key)
     {
        // Debug.Log("Set eye " + key);
-        eye.GetComponent<SpriteResolver>().SetCategoryAndLabel(category_eye, key);
-        eye.GetComponent<SpriteResolver>().ResolveSpriteToSpriteRenderer();
+        eye.GetComponent<UnityEngine.U2D.Animation.SpriteResolver>().SetCategoryAndLabel(category_eye, key);
+        eye.GetComponent<UnityEngine.U2D.Animation.SpriteResolver>().ResolveSpriteToSpriteRenderer();
     }
 
     internal void SetColors(string main, string sub) {

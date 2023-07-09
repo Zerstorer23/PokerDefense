@@ -81,16 +81,15 @@ public class LocalizationManager : MonoBehaviour {
     string GetLocalLanguage() {
         SystemLanguage sl =(SystemLanguage) Application.systemLanguage;
         Debug.Log("LANGUAGE: "+sl);
-        if (sl == SystemLanguage.Korean)
-        {
-            return "text_ko_kr";
-        }
-        else
-        {
-            return "text_en_us";
 
+        switch (sl) {
+            case SystemLanguage.Korean:
+                return "text_ko_kr";
+            case SystemLanguage.Japanese:
+                return "text_jp_jpn";
+            default:
+                return "text_en_us";
         }
-
 }
 
     public static string Convert(string key)
